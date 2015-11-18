@@ -1,0 +1,1321 @@
+#textdomain wesnoth-pk-westerners
+
+[unit_type]
+    id=Factory_Germany
+    name= _ "German Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+
+	
+	[event]
+        name=capture
+        first_time_only=no
+        [filter]
+            race="Infantry"
+        [/filter]
+        [modify_unit]
+			[filter]
+				race="Infantry"
+				x,y=$x1,$y1
+			[/filter]
+			experience = $($this_unit.experience + 2)
+		[/modify_unit]
+    [/event]
+	
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+[unit_type]
+    id=Factory_Western_Allies
+    name= _ "Allied Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[unit_type]
+    id=Factory_Soviet_Union
+    name= _ "Soviet Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[unit_type]
+    id=Factory_Germany_AI
+    name= _ "German Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+	
+	
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+[unit_type]
+    id=Factory_Western_Allies_AI
+    name= _ "Allied Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[unit_type]
+    id=Factory_Soviet_Union_AI
+    name= _ "Soviet Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+	[event]
+        name=moveto
+        first_time_only=no
+        [filter]
+            race="Infantry"
+			[filter_location]
+				terrain=W*
+			[/filter_location]
+        [/filter]
+        [harm_unit]
+			amount=0
+			[filter]
+				x,y=$x1,$y1
+			[/filter]
+			slowed=yes
+        [/harm_unit]
+    [/event]
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################
+#####Legacy stuff below here, ignore#####
+########################################
+
+
+[unit_type]
+    id=Factory
+    name= _ "Production Facility"
+    race=Leader
+    gender=male
+    image="Vehicle/flak.png"
+    {MAGENTA_IS_THE_TEAM_COLOR}
+    #ellipse="misc/ellipse-nozoc"
+    hitpoints=4000
+    movement_type=mcinfantry
+    movement=4
+	vision=8
+    experience=30
+    level=1
+    alignment=lawful
+    advances_to=
+    die_sound={SOUND_LIST:VEHICLE_DIE}
+    cost=1000
+    usage=AntiAir
+    description= _ "
+"
+
+
+
+	
+	
+
+    [resistance]
+	Bullet=100
+	Sniper=100
+	Cannon=100
+	Grenade=100
+	Bomb=50
+	Rocket=100
+	Missile=100
+	Shrapnel=100
+    [/resistance]
+
+    [abilities]
+
+    [/abilities]
+	[defense]
+			deep_water=100		
+			reef=100
+			shallow_water=100	
+			swamp_water=100		
+			sand=100			
+			frozen=100		
+			hills=100		
+			mountains=100
+			village=100		
+			castle=40		
+			forest=100		
+			flat=100
+			impassable=100		
+			cave=100			
+			fungus=100		
+			unwalkable=100
+	[/defense]
+	
+	
+    {DEFENSE_ANIM "" "" {SOUND_LIST:RICOCHET_METAL} }
+
+    [attack]
+        name=Bofors
+        description=_"Bofors"
+        icon=attacks/blank.png
+        type=Flak
+        range=close
+        damage=16
+        number=10
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack]
+        name=MG42
+        description=_"MG42"
+        icon=attacks/blank.png
+        type=Bullet
+        range=medium
+        damage=7
+        number=8
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+	[attack]
+        name=50mm
+        description=_"50mm AT Guns"
+        icon=attacks/blank.png
+        type=Cannon
+        range=far
+        damage=540
+        number=1
+	[specials]
+	    {WEAPON_SPECIAL_SWARM}
+	[/specials]
+    [/attack]
+    [attack_anim]
+        [filter_attack]
+        [/filter_attack]
+        [missile_frame]
+            begin=-150
+            end=0
+            image=""
+            image_diagonal=""
+        [/missile_frame]
+        [frame]
+            begin=-445
+            end=-380
+            image="Vehicle/flak.png"
+	    sound=cannon-1.wav
+        [/frame]
+        [if]
+            hits=yes
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+		sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/if]
+        [else]
+            hits=no
+            [frame]
+                begin=-380
+                end=-305
+                image="Vehicle/flak.png"
+                sound={SOUND_LIST:BOMB}
+            [/frame]
+        [/else]
+        [frame]
+            begin=-305
+            end=-230
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-230
+            end=-130
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=-130
+            end=0
+            image="Vehicle/flak.png"
+        [/frame]
+        [frame]
+            begin=0
+            end=65
+            image="Vehicle/flak.png"
+        [/frame]
+    [/attack_anim]
+
+[/unit_type]

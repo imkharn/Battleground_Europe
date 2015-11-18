@@ -1,0 +1,9 @@
+#ifdef MULTIPLAYER
+[binary_path]
+    path=data/add-ons/Battleground_Europe
+[/binary_path]
+{~add-ons/Battleground_Europe/}
+[+units]
+    {~add-ons/Battleground_Europe/units}
+[/units]
+#endif
